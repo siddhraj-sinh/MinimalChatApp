@@ -5,17 +5,20 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatComponent } from './chat/chat.component';
 const routes:Routes=[
 
   {path:'', redirectTo:'/register', pathMatch:'full'},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  {path:'chat',component:ChatComponent}
 ]
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,
