@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './chat/chat.component';
+import { HeaderComponent } from './header/header.component';
 const routes:Routes=[
 
   {path:'', redirectTo:'/register', pathMatch:'full'},
@@ -18,7 +19,8 @@ const routes:Routes=[
   declarations: [
     RegisterComponent,
     LoginComponent,
-    ChatComponent
+    ChatComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
