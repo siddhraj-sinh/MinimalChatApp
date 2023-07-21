@@ -1,0 +1,15 @@
+/* Add this CSS in your global styles file or component's style encapsulation */
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  mat-card{
+    display: inline-block;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }

@@ -1,1 +1,34 @@
-<p>register works!</p>
+<div class="container">
+<mat-card>
+    <mat-card-title>
+        Register
+    </mat-card-title>
+    <mat-card-content>
+      <div class="form-content">
+        <form>
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput type="text" placeholder="Enter Name" autocomplete="off" />
+          </mat-form-field>
+          <mat-divider></mat-divider>
+  
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput type="email" placeholder="Enter Email" autocomplete="off" />
+            <!-- You can add mat-error for validation errors if needed -->
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">Email is <strong>required</strong></mat-error> -->
+          </mat-form-field>
+          <mat-divider></mat-divider>
+  
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Enter Password" autocomplete="off" />
+          </mat-form-field>
+          <mat-divider></mat-divider>
+  
+          <button mat-raised-button color="primary">Click Me</button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

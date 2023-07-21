@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+
+  // getControl(name:any):AbstractControl | null{
+  //   return this.signupForm.get(name);
+  // }
 }
