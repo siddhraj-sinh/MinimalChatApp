@@ -6,7 +6,7 @@
         </a>
         <div *ngFor="let user of Users" class="list-group list-group-flush border-bottom scrollarea">
             <!-- active -->
-            <a class="list-group-item list-group-item-action  py-3 lh-tight" aria-current="true">
+            <a class="list-group-item list-group-item-action  py-3 lh-tight" aria-current="true" (click)="onUserClick(user)">
                 <div class="d-flex w-100 align-items-center">
                     <div class="profile">
                         <div class="user-image">
@@ -23,6 +23,89 @@
 </div>
 
 <div class="bg">
+    <nav class="navbar" style="background-color: #047BD5;">
+        <div class="container-fluid" style="justify-content: start;">
+          <a class="navbar-brand">
+            <div class="profile">
+                <div class="user-image">
+                  <span>{{ currentUser.name.charAt(0) }}</span>
+                </div>
+                </div>
+           
+          </a>
+          <strong style="color: white;">{{currentUser.name}}</strong>
+        </div>
 
-    <h1>Hello</h1>
+
+        <!--Chat interface-->
+      
+      </nav>
+      <div class="chat-container">
+        <div class="chat-messages">
+          <!-- Dummy outgoing message -->
+          <div class="chat-message outgoing">
+            <span class="message-content">Hello, how are you doing?</span>
+          </div>
+    
+          <!-- Dummy incoming message -->
+          <div class="chat-message incoming">
+            <span class="message-content">Hi! I'm doing great. Thanks!</span>
+          </div>
+          <div class="chat-message outgoing">
+            <span class="message-content">Hello, how are you doing?</span>
+          </div>
+    
+          <!-- Dummy incoming message -->
+          <div class="chat-message incoming">
+            <span class="message-content">Hi! I'm doing great. Thanks!</span>
+          </div>
+          <div class="chat-message outgoing">
+            <span class="message-content">Hello, how are you doing?</span>
+          </div>
+    
+          <!-- Dummy incoming message -->
+          <div class="chat-message incoming">
+            <span class="message-content">Hi! I'm doing great. Thanks!</span>
+          </div>
+          <div class="chat-message outgoing">
+            <span class="message-content">Hello, how are you doing?</span>
+          </div>
+    
+          <!-- Dummy incoming message -->
+          <div class="chat-message incoming">
+            <span class="message-content">Hi! I'm doing great. Thanks!</span>
+          </div>
+          <div class="chat-message outgoing">
+            <span class="message-content">Hello, how are you doing?</span>
+          </div>
+    
+          <!-- Dummy incoming message -->
+          <div class="chat-message incoming">
+            <span class="message-content">Hi! I'm doing great. Thanks!</span>
+          </div>
+          <div class="chat-message outgoing">
+            <span class="message-content">Hello, how are you doing?</span>
+          </div>
+    
+          <!-- Dummy incoming message -->
+          <div class="chat-message incoming">
+            <span class="message-content">Hi! I'm doing great. Thanks!</span>
+          </div>
+          <div class="chat-message outgoing">
+            <span class="message-content">Hello, how are you doing?</span>
+          </div>
+    
+          <!-- Dummy incoming message -->
+          <div class="chat-message incoming">
+            <span class="message-content">Hi! I'm doing great. Thanks!</span>
+          </div>
+    
+          <!-- Add more dummy messages here -->
+        </div>
+    
+        <!-- Chat Input -->
+        <div class="chat-input">
+          <input type="text" placeholder="Type your message..." />
+        </div>
+      </div>
 </div>
