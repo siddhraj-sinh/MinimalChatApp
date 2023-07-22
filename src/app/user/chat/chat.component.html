@@ -13,8 +13,11 @@
                           <span>{{ user.name.charAt(0) }}</span>
                         </div>
                         </div>
+                        <div class="row">
                     <strong class="mb-1">{{user.name}}</strong>
-                    <!-- <small>Wed</small> -->
+                    
+                    <small>{{user.email}}</small>
+                  </div>
                 </div>
             </a>
 
@@ -106,6 +109,7 @@
         <!-- Chat Input -->
         <div class="chat-input">
           <input type="text" placeholder="Type your message..." />
+          <button class="send-button"><i class="fa fa-paper-plane"></i></button>
         </div>
       </div>
 </div>
