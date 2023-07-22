@@ -31,12 +31,12 @@
           <a class="navbar-brand">
             <div class="profile">
                 <div class="user-image">
-                  <span>{{ currentUser.name.charAt(0) }}</span>
+                  <span>{{ currentReciever.name.charAt(0) }}</span>
                 </div>
                 </div>
            
           </a>
-          <strong style="color: white;">{{currentUser.name}}</strong>
+          <strong style="color: white;">{{currentReciever.name}}</strong>
         </div>
 
 
@@ -108,8 +108,8 @@
     
         <!-- Chat Input -->
         <div class="chat-input">
-          <input type="text" placeholder="Type your message..." />
-          <button class="send-button"><i class="fa fa-paper-plane"></i></button>
+          <input type="text" placeholder="Type your message..." [(ngModel)]="messageContent"/>
+          <button class="send-button" (click)="sendMessage()"><i class="fa fa-paper-plane"></i></button>
         </div>
       </div>
 </div>

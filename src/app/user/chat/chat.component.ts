@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { ChatService } from 'src/app/services/chat.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,18 +10,30 @@ import { UserService } from 'src/app/services/user.service';
 export class ChatComponent implements OnInit {
 
   Users:any[]=[];
-  currentUser:any;
-   constructor(private user:UserService){}
+  currentReciever:any;
+  messageContent:string = "";
+   constructor(private userService:UserService,private chatService:ChatService){}
   ngOnInit(): void {
-    this.user.retrieveUsers().subscribe((res)=>{
+    this.userService.retrieveUsers().subscribe((res)=>{
       console.log(res);
       this.Users=res;
-      this.currentUser=res[0];
+      this.currentReciever=res[0];
     })
 
   }
 
   onUserClick(user:any) {
-   this.currentUser=user;
+   this.currentReciever=user;
+  }
+
+  sendMessage(){
+    console.log(this.messageContent);
+     let body={
+      receiverId:this.currentReciever.userId,
+      content:this.messageContent
+     }
+    this.chatService.sendMessage(body).subscribe((res)=>{
+      this.messageContent="";
+    })
   }
 }
