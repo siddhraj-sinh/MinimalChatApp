@@ -25,7 +25,13 @@
   </div>
 </div>
 
-
+<div *ngIf="showWelcomeUI" class="welcome-container">
+  <div>
+  <img src="../../../assets/app-logo.svg" alt="MinimalChat" class="app-logo">
+  <h1 class="app-title">Minimal Chat</h1>
+  <p class="app-subtitle">Welcome to the best app ever!</p>
+</div>
+</div>
 <div>
   <!-- <app-conversation-history ></app-conversation-history> -->
   <router-outlet></router-outlet>
