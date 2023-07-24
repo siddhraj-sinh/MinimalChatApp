@@ -39,7 +39,23 @@ export class ChatService {
   );;
   }
 
-  editMessage(){
-    
+  editMessage(messageId:number,content:string):Observable<any>{
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.user.getToken()}`,
+    });
+    const body = { content: content };
+
+    return this.http.put<any>(`${this.url}/${messageId}`, body, { headers: headers });
+  }
+
+   // Method to delete a message
+   deleteMessage(messageId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.user.getToken()}`,
+    });
+
+    return this.http.delete<any>(`${this.url}/${messageId}`, { headers: headers });
   }
 }

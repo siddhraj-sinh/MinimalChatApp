@@ -70,15 +70,10 @@ export class ConversationHistoryComponent implements OnInit{
     // Update the message content with edited content
     message.content = message.editedContent;
     message.editMode = false;
-    // Make a PUT request to update the message content on the backend API
-    // this.messageService.updateMessageContent(message.id, message.editedContent).subscribe(
-    //   (data) => {
-    //     // Handle success response if required
-    //   },
-    //   (error) => {
-    //     // Handle error response if required
-    //   }
-    // );
+    console.log(message);
+   this.chatService.editMessage(message.id,message.content).subscribe((res)=>{
+    console.log(res);
+   })
   }
 
   onDeclineEdit(message: any) {
