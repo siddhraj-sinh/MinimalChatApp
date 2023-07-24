@@ -37,6 +37,9 @@ export class ChatService {
   return this.http.get<any[]>(this.url, {headers:headers, params:params }).pipe(
     map((response: any) => response.messages) // Extract the 'messages' array from the response
   );;
+  }
 
+  editMessage(){
+    
   }
 }

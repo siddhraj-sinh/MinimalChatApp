@@ -90,3 +90,62 @@
     .send-button i {
       font-size: 20px;
     }
+
+    .context-menu {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      margin-left: 5px;
+      display: flex;
+      flex-direction: column;
+      background-color: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+    
+    .context-menu-item {
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #343a40;
+      transition: background-color 0.2s ease;
+    }
+    
+    .context-menu-item:hover {
+      background-color: #e9ecef;
+    }
+    
+    .message-editor-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .message-editor {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .editor-actions {
+      display: flex;
+      margin-left: 8px;
+    }
+    
+    .accept-icon,
+    .decline-icon {
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px;
+      margin: 0 4px;
+      color: #ffffff;
+    }
+    
+    .accept-icon:hover,
+    .decline-icon:hover {
+      color: #0056b3;
+    }
+    

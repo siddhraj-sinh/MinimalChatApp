@@ -50,4 +50,41 @@ export class ConversationHistoryComponent implements OnInit{
       this.messageContent="";
     })
   }
+
+  onContextMenu(event: MouseEvent, message: any) {
+    event.preventDefault();
+    // // Show the context menu (edit option) only for current user's messages
+    // if (message.senderId === 1) {
+    //   message.editMode = true;
+    //   message.editedContent = message.content;
+    // }
+    // Show the context menu (edit and delete options) only for current user's messages
+  if (message.senderId === 1) {
+    message.editMode = true;
+    message.editedContent = message.content;
+    message.showContextMenu = true; // Add a property to control the context menu visibility
+  }
+  }
+
+  onAcceptEdit(message: any) {
+    // Update the message content with edited content
+    message.content = message.editedContent;
+    message.editMode = false;
+    // Make a PUT request to update the message content on the backend API
+    // this.messageService.updateMessageContent(message.id, message.editedContent).subscribe(
+    //   (data) => {
+    //     // Handle success response if required
+    //   },
+    //   (error) => {
+    //     // Handle error response if required
+    //   }
+    // );
+  }
+
+  onDeclineEdit(message: any) {
+    // Revert back to original content and close the inline editor
+    message.editMode = false;
+  }
+  onEditMessage(message:any){}
+  onDeleteMessage(messageId: number) {}
 }
