@@ -18,67 +18,20 @@
       </nav>
       <div class="chat-container">
         <div class="chat-messages">
-          <!-- Dummy outgoing message -->
-          <div class="chat-message outgoing">
-            <span class="message-content">Hello, how are you doing?</span>
+          <div style=" padding: 8px;
+          border-radius: 8px;
+          max-width: 80%;
+          margin: 4px 0;"
+            [ngClass]="{
+              'chat-message outgoing': message.senderId === currentUserId,
+              'chat-message incoming': message.senderId !== currentUserId
+            }"
+            *ngFor="let message of messages"
+          >
+            <span class="message-content">{{ message.content }}</span>
           </div>
-    
-          <!-- Dummy incoming message -->
-          <div class="chat-message incoming">
-            <span class="message-content">Hi! I'm doing great. Thanks!</span>
-          </div>
-          <div class="chat-message outgoing">
-            <span class="message-content">Hello, how are you doing?</span>
-          </div>
-    
-          <!-- Dummy incoming message -->
-          <div class="chat-message incoming">
-            <span class="message-content">Hi! I'm doing great. Thanks!</span>
-          </div>
-          <div class="chat-message outgoing">
-            <span class="message-content">Hello, how are you doing?</span>
-          </div>
-    
-          <!-- Dummy incoming message -->
-          <div class="chat-message incoming">
-            <span class="message-content">Hi! I'm doing great. Thanks!</span>
-          </div>
-          <div class="chat-message outgoing">
-            <span class="message-content">Hello, how are you doing?</span>
-          </div>
-    
-          <!-- Dummy incoming message -->
-          <div class="chat-message incoming">
-            <span class="message-content">Hi! I'm doing great. Thanks!</span>
-          </div>
-          <div class="chat-message outgoing">
-            <span class="message-content">Hello, how are you doing?</span>
-          </div>
-    
-          <!-- Dummy incoming message -->
-          <div class="chat-message incoming">
-            <span class="message-content">Hi! I'm doing great. Thanks!</span>
-          </div>
-          <div class="chat-message outgoing">
-            <span class="message-content">Hello, how are you doing?</span>
-          </div>
-    
-          <!-- Dummy incoming message -->
-          <div class="chat-message incoming">
-            <span class="message-content">Hi! I'm doing great. Thanks!</span>
-          </div>
-          <div class="chat-message outgoing">
-            <span class="message-content">Hello, how are you doing?</span>
-          </div>
-    
-          <!-- Dummy incoming message -->
-          <div class="chat-message incoming">
-            <span class="message-content">Hi! I'm doing great. Thanks!</span>
-          </div>
-    
-          <!-- Add more dummy messages here -->
         </div>
-    
+        
         <!-- Chat Input -->
         <div class="chat-input">
           <input type="text" placeholder="Type your message..." [(ngModel)]="messageContent"/>

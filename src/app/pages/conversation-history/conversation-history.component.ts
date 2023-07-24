@@ -11,6 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 export class ConversationHistoryComponent implements OnInit{
   currentReciever:any;
   messageContent:string = "";
+  currentUserId?  :number | null=1; 
+  messages?:any[];
   constructor(private route:ActivatedRoute,private userService:UserService,private chatService:ChatService){}
   ngOnInit(): void {
 
@@ -21,10 +23,22 @@ export class ConversationHistoryComponent implements OnInit{
     this.route.params.subscribe((params) => {
       const userId = params['userId'];
       console.log(userId);
+
+      this.getMessages(userId)
     });
 
+    //this.currentUserId = this.userService.getUserId()
   }
 
+  
+
+  getMessages(userId:any){
+    this.chatService.getMessages(userId).subscribe((res)=>{
+      console.log(res);
+      this.messages=res;
+    })
+    console.log(this.messages)
+  }
 
   sendMessage(){
     console.log(this.messageContent);
