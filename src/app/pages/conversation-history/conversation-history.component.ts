@@ -79,9 +79,21 @@ export class ConversationHistoryComponent implements OnInit{
       message.showContextMenu = true; // Add a property to control the context menu visibility
     }
   }
-  onDeleteMessage(messageId: number) {
-    this.chatService.deleteMessage(messageId).subscribe((res)=>{
+  onDeleteMessage(message: any) {
+    if (message.senderId === 1) {
+      message.deleteMode = true;
+      message.showContextMenu = true; // Add a property to control the context menu visibility
+    }
+  }
+
+  onAcceptDelete(message: any) {
+    this.chatService.deleteMessage(message.id).subscribe((res)=>{
       console.log(res);
     })
+  }
+
+  onDeclineDelete(message: any) {
+    // Revert back to original content and close the inline editor
+    message.deleteMode = false;
   }
 }
