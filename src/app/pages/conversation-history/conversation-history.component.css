@@ -148,4 +148,23 @@
     .decline-icon:hover {
       color: #0056b3;
     }
+  
+    .message-actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
     
+    .edit-button,
+.delete-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 8px;
+  color: #ffffff;
+}
+
+.delete-button {
+  color: #ffffff;
+}

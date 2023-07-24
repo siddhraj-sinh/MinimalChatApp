@@ -30,6 +30,13 @@
             (contextmenu)="onContextMenu($event, message)"
           >
           <span class="message-content" *ngIf="!message.editMode">{{ message.content }}</span>
+         <div *ngIf="message.isEvent && !message.editMode" class="editor-actions">
+         
+            <button class="edit-button" (click)="onEditMessage(message)"><i class="fas fa-edit"></i></button>
+            <button class="delete-button" (click)="onDeleteMessage(message.id)"><i class="fas fa-trash-alt"></i></button>
+     
+    
+         </div>
           <div class="message-editor-container" *ngIf="message.editMode">
             <input type="text" class="message-editor" [(ngModel)]="message.editedContent">
             <div class="editor-actions">

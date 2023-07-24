@@ -53,17 +53,9 @@ export class ConversationHistoryComponent implements OnInit{
 
   onContextMenu(event: MouseEvent, message: any) {
     event.preventDefault();
-    // // Show the context menu (edit option) only for current user's messages
-    // if (message.senderId === 1) {
-    //   message.editMode = true;
-    //   message.editedContent = message.content;
-    // }
-    // Show the context menu (edit and delete options) only for current user's messages
-  if (message.senderId === 1) {
-    message.editMode = true;
-    message.editedContent = message.content;
-    message.showContextMenu = true; // Add a property to control the context menu visibility
-  }
+    if (message.senderId === 1) {
+    message.isEvent=true;
+    }
   }
 
   onAcceptEdit(message: any) {
@@ -80,6 +72,16 @@ export class ConversationHistoryComponent implements OnInit{
     // Revert back to original content and close the inline editor
     message.editMode = false;
   }
-  onEditMessage(message:any){}
-  onDeleteMessage(messageId: number) {}
+  onEditMessage(message:any){
+    if (message.senderId === 1) {
+      message.editMode = true;
+      message.editedContent = message.content;
+      message.showContextMenu = true; // Add a property to control the context menu visibility
+    }
+  }
+  onDeleteMessage(messageId: number) {
+    this.chatService.deleteMessage(messageId).subscribe((res)=>{
+      console.log(res);
+    })
+  }
 }
