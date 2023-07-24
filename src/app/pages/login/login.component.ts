@@ -33,10 +33,12 @@ emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
       console.log('Logged in successfully');
       console.log('Token:', response.token);
       console.log('Profile:', response.profile);
+      this.user.saveToken(response.token);
+      this.router.navigateByUrl('/chat');
     },
     (error) => {
       // Handle login error
-      console.error('Login failed:', error);
+      console.error('Login failed:', error.error);
     }) 
   }
   getControl(name:any):AbstractControl | null{
