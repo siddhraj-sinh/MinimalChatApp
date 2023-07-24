@@ -54,7 +54,7 @@ export class ConversationHistoryComponent implements OnInit{
   onContextMenu(event: MouseEvent, message: any) {
     event.preventDefault();
     if (message.senderId === 1) {
-    message.isEvent=true;
+    message.isEvent=!message.isEvent;
     }
   }
 
