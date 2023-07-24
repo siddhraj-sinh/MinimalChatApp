@@ -24,6 +24,8 @@ export class UserlistComponent implements OnInit {
   onUserClick(user:any) {
   //   console.log(user);
    this.currentReciever=user;
-   this.router.navigate(['/chat/user/',this.currentReciever.userId])
+   //this.router.navigate(['/chat/user/',this.currentReciever.userId])
+
+   this.router.navigate([{ outlets: { bookPopup: [ 'update-book' ] }}]); 
   }
 }

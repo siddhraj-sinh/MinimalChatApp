@@ -22,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     ChatComponent,
     ConversationHistoryComponent,
-    UserlistComponent
+    UserlistComponent,
+    
   ],
   imports: [
     BrowserModule,

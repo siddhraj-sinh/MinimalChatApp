@@ -7,12 +7,12 @@ import { ConversationHistoryComponent } from './pages/conversation-history/conve
 
 const routes: Routes = [
 
-  {path:'',redirectTo:'/register',pathMatch:'full'},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
-  { path: 'chat/user/:userId', component: ConversationHistoryComponent},
-  {path:'chat',component:ChatComponent},
-  // { path: '', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
+  {path:'chat',component:ChatComponent, children: [
+    { path: 'user/:userId', component: ConversationHistoryComponent },
+  ]},
+  {path:'',redirectTo:'/register',pathMatch:'full'}
 ];
 
 @NgModule({

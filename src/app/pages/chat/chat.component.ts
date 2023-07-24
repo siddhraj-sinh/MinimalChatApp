@@ -1,4 +1,5 @@
 import { Component,OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChatService } from 'src/app/services/chat.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +13,7 @@ export class ChatComponent implements OnInit {
   Users:any[]=[];
   currentReciever:any;
   messageContent:string = "";
-   constructor(private userService:UserService,private chatService:ChatService){}
+   constructor(private userService:UserService,private chatService:ChatService,private router:Router){}
   ngOnInit(): void {
     this.userService.retrieveUsers().subscribe((res)=>{
       console.log(res);
@@ -24,6 +25,10 @@ export class ChatComponent implements OnInit {
 
   onUserClick(user:any) {
    this.currentReciever=user;
+
+ // Navigating to the ConversationHistoryComponent with named outlet
+ //this.router.navigate([{ outlets: { conversation: ['chat', 'user', this.currentReciever.userId] } }]);
+
   }
 
   sendMessage(){
