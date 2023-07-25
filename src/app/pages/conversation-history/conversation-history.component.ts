@@ -12,16 +12,23 @@ export class ConversationHistoryComponent implements OnInit{
   currentReciever:any;
   currentRecieverId:any;
   messageContent:string = "";
-  currentUserId?  :number | null=1; 
+  currentUserId:number; 
   messages:any[] = [];
+
   constructor(private route:ActivatedRoute,private userService:UserService,private chatService:ChatService){
     this.currentRecieverId= this.route.snapshot.params['userId'];
     console.log(this.currentRecieverId)
     console.log("constructor..")
+
+    this.currentUserId = this.userService.getLoggedInUser();
+    console.log(this.currentUserId)
+  
   }
   ngOnInit(): void {
     console.log("on init")
+    this.currentUserId = this.userService.getLoggedInUser();
 
+    console.log(this.currentUserId)
     this.route.params.subscribe(params=>{
       const userId = +params['userId'];
       console.log(userId);
@@ -75,7 +82,7 @@ export class ConversationHistoryComponent implements OnInit{
 
   onContextMenu(event: MouseEvent, message: any) {
     event.preventDefault();
-    if (message.senderId === 1) {
+    if (message.senderId === this.currentUserId) {
     message.isEvent=!message.isEvent;
     }
   }
@@ -95,14 +102,14 @@ export class ConversationHistoryComponent implements OnInit{
     message.editMode = false;
   }
   onEditMessage(message:any){
-    if (message.senderId === 1) {
+    if (message.senderId === this.currentUserId) {
       message.editMode = true;
       message.editedContent = message.content;
       message.showContextMenu = true; // Add a property to control the context menu visibility
     }
   }
   onDeleteMessage(message: any) {
-    if (message.senderId === 1) {
+    if (message.senderId === this.currentUserId) {
       message.deleteMode = true;
       message.showContextMenu = true; // Add a property to control the context menu visibility
     }
@@ -111,6 +118,8 @@ export class ConversationHistoryComponent implements OnInit{
   onAcceptDelete(message: any) {
     this.chatService.deleteMessage(message.id).subscribe((res)=>{
       console.log(res);
+      this.getMessages(this.currentReciever.userId);
+
     })
   }
 
