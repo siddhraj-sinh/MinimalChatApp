@@ -99,3 +99,9 @@ pre {
   color: #777;
   padding: 20px;
 }
+.column-toggle{
+  margin: 10px;
+}
+.hidden {
+  display: none;
+}

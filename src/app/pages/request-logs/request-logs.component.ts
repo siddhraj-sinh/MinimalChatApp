@@ -12,6 +12,11 @@ export class RequestLogsComponent {
   startTime?: Date;
   endTime?: Date;
   showColumns: string[] = ['timestamp', 'method', 'url', 'status', 'requestBody'];
+  showIdColumn: boolean = true;
+  showTimestampColumn: boolean = true;
+  showIpAddressColumn: boolean = true;
+  showUsernameColumn: boolean = true;
+  showRequestBodyColumn: boolean = true;
 
   constructor(private logService:LogsService) { }
 
@@ -65,5 +70,27 @@ export class RequestLogsComponent {
   padZero(num: number): string {
     return num < 10 ? `0${num}` : `${num}`;
   }
+ 
 
+  toggleColumn(columnName: string) {
+    switch (columnName) {
+      case 'id':
+        this.showIdColumn = !this.showIdColumn;
+        break;
+      case 'timestamp':
+        this.showTimestampColumn = !this.showTimestampColumn;
+        break;
+      case 'ipAddress':
+        this.showIpAddressColumn = !this.showIpAddressColumn;
+        break;
+      case 'username':
+        this.showUsernameColumn = !this.showUsernameColumn;
+        break;
+      case 'requestBody':
+        this.showRequestBodyColumn = !this.showRequestBodyColumn;
+        break;
+      default:
+        break;
+    }
+  }
 }
