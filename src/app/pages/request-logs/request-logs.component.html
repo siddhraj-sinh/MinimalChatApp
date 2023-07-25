@@ -1,0 +1,39 @@
+<div>
+    <label for="startTime">Start Time:</label>
+    <input type="datetime-local" id="startTime" [(ngModel)]="startTime" (change)="getLogs()" />
+  </div>
+  <div>
+    <label for="endTime">End Time:</label>
+    <input type="datetime-local" id="endTime" [(ngModel)]="endTime" (change)="getLogs()" />
+  </div>
+  <div class="time-range-buttons">
+    <button (click)="getLastLogs(5)">Last 5 mins</button>
+    <button (click)="getLastLogs(10)">Last 10 mins</button>
+    <button (click)="getLastLogs(30)">Last 30 mins</button>
+  </div>
+
+  <button (click)="customeTime()">Filter</button>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Timestamp</th>
+        <th>IP Address</th>
+        <th>Username</th>
+        <th>Request Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of logs">
+        <td>{{ log.id }}</td>
+        <td>{{ log.timestamp }}</td>
+        <td>{{ log.ipAddress }}</td>
+        <td>{{ log.username || 'N/A' }}</td>
+        <td>
+          <pre>{{ log.requestBody }}</pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

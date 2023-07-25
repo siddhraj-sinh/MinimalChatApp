@@ -4,6 +4,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { ConversationHistoryComponent } from './pages/conversation-history/conversation-history.component';
+import { RequestLogsComponent } from './pages/request-logs/request-logs.component';
 
 const routes: Routes = [
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'chat',component:ChatComponent, children: [
     { path: 'user/:userId', component: ConversationHistoryComponent },
   ]},
+  {path:'logs',component:RequestLogsComponent},
   {path:'',redirectTo:'/register',pathMatch:'full'}
 ];
 
