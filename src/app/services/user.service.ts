@@ -35,6 +35,9 @@ export class UserService {
   removeToken(): void {
     localStorage.removeItem(this.tokenKey);
   }
+  isLoggedIn(): boolean {
+    return !!this.getToken(); // Check if user ID exists in local storage
+  }
 
   //retrieve users
 
