@@ -11,6 +11,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { ConversationHistoryComponent } from './pages/conversation-history/conversation-history.component';
 import { UserlistComponent } from './pages/userlist/userlist.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RequestLogsComponent } from './pages/request-logs/request-logs.component';
 
 
 
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChatComponent,
     ConversationHistoryComponent,
     UserlistComponent,
+    RequestLogsComponent,
     
   ],
   imports: [
