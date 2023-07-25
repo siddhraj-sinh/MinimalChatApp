@@ -13,26 +13,35 @@ export class ConversationHistoryComponent implements OnInit{
   currentRecieverId:any;
   messageContent:string = "";
   currentUserId?  :number | null=1; 
-  messages?:any[];
+  messages:any[] = [];
   constructor(private route:ActivatedRoute,private userService:UserService,private chatService:ChatService){
     this.currentRecieverId= this.route.snapshot.params['userId'];
+    console.log(this.currentRecieverId)
+    console.log("constructor..")
   }
   ngOnInit(): void {
-    this.userService.retrieveUsers().subscribe((res)=>{
-      this.route.params.subscribe((params) => {
-        const userId = Number(params['userId']);
+    console.log("on init")
 
-        // Find the user with matching userId from the user list
-        this.currentReciever = res.find((user) => user.userId === userId);
-      });
-     
-    })
-    this.route.params.subscribe((params) => {
-      const userId = params['userId'];
+    this.route.params.subscribe(params=>{
+      const userId = +params['userId'];
       console.log(userId);
 
-      this.getMessages(userId)
-    });
+      this.getMessages(userId);
+
+      this.userService.retrieveUsers().subscribe((res)=>{
+        this.currentReciever = res.find((user) => user.userId === userId);
+      })
+    })
+
+    // this.userService.retrieveUsers().subscribe((res)=>{
+    //   this.route.params.subscribe((params) => {
+    //     const userId = Number(params['userId']);
+    //     // Find the user with matching userId from the user list
+    //     this.currentReciever = res.find((user) => user.userId === userId);
+    // this.getMessages(this.currentRecieverId);
+
+    //   });
+    // })
 
     //this.currentUserId = this.userService.getUserId()
   }
@@ -40,6 +49,7 @@ export class ConversationHistoryComponent implements OnInit{
   
 
   getMessages(userId:any){
+    this.messages=[];
     this.chatService.getMessages(userId).subscribe((res)=>{
       console.log(res);
       this.messages=res;
@@ -58,6 +68,7 @@ export class ConversationHistoryComponent implements OnInit{
       content:this.messageContent
      }
     this.chatService.sendMessage(body).subscribe((res)=>{
+      this.getMessages(this.currentReciever.userId);
       this.messageContent="";
     })
   }

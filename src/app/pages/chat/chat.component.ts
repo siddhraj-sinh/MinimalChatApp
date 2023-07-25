@@ -20,12 +20,12 @@ export class ChatComponent implements OnInit {
       console.log(res);
       this.Users = res;
     })
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Check if the route has changed, and hide the welcome div if the router outlet is showing
-        this.showWelcomeUI = !this.router.url.startsWith('/chat/user');
-      }
-    });
+    // this.router.events.subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     // Check if the route has changed, and hide the welcome div if the router outlet is showing
+    //     this.showWelcomeUI = !this.router.url.startsWith('/chat/user');
+    //   }
+    // });
 
   }
 
