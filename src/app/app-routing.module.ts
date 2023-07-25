@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { ConversationHistoryComponent } from './pages/conversation-history/conversation-history.component';
 import { RequestLogsComponent } from './pages/request-logs/request-logs.component';
+import { authGuard } from './services/auth.guard';
 
 const routes: Routes = [
 
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'chat',component:ChatComponent, children: [
     { path: 'user/:userId', component: ConversationHistoryComponent },
-  ]},
+  ],canActivate:[authGuard]},
   {path:'logs',component:RequestLogsComponent},
   {path:'',redirectTo:'/register',pathMatch:'full'}
 ];
