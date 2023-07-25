@@ -10,15 +10,22 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ConversationHistoryComponent implements OnInit{
   currentReciever:any;
+  currentRecieverId:any;
   messageContent:string = "";
   currentUserId?  :number | null=1; 
   messages?:any[];
-  constructor(private route:ActivatedRoute,private userService:UserService,private chatService:ChatService){}
+  constructor(private route:ActivatedRoute,private userService:UserService,private chatService:ChatService){
+    this.currentRecieverId= this.route.snapshot.params['userId'];
+  }
   ngOnInit(): void {
-
     this.userService.retrieveUsers().subscribe((res)=>{
-      console.log(res);
-      this.currentReciever=res[0];
+      this.route.params.subscribe((params) => {
+        const userId = Number(params['userId']);
+
+        // Find the user with matching userId from the user list
+        this.currentReciever = res.find((user) => user.userId === userId);
+      });
+     
     })
     this.route.params.subscribe((params) => {
       const userId = params['userId'];
@@ -36,6 +43,10 @@ export class ConversationHistoryComponent implements OnInit{
     this.chatService.getMessages(userId).subscribe((res)=>{
       console.log(res);
       this.messages=res;
+    },(error)=>{
+      if(error.error=='Conversation not found'){
+        this.messages=[];
+      }
     })
     console.log(this.messages)
   }
